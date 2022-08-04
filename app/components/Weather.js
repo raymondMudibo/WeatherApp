@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, ImageBackground, Dimensions, StatusBar } from '
 import SearchBar from './SearchBar';
 import { haze, rainy, snow, sunny } from '../assets/backgroundImages/index';
 
-function Weather({ weatherData }) {
+function Weather({ weatherData, fetchWeatherData }) {
   const [backgroundImage, setBackgroundImage] = useState(null);
 
-  const { weather, 
+  const { weather,
     name,
     main: { temp, humidity },
     wind: { speed }
@@ -34,30 +34,30 @@ function Weather({ weatherData }) {
         style={styles.backgroundImg}
         resizeMode='cover'
       >
-        <SearchBar />
-       
-        {/* <SearchBar fetchWeatherData={fetchWeatherData} /> */}
 
-        <View style={{alignItems: 'center' }}>
-                    <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 46 }}>{name}</Text>
-                    <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold'}}>{main}</Text>
-                    <Text style={{ ...styles.headerText, color: textColor,}}>{temp} °C</Text>
-                </View>
 
-                <View style={styles.extraInfo}>
+        <SearchBar fetchWeatherData={fetchWeatherData} />
 
-                    <View style={styles.info}>
-                        <Text style={{ fontSize: 22, color: 'white' }}>Humidity</Text>
-                        <Text style={{ fontSize: 22, color: 'white' }}>{humidity} %</Text>
-                    </View>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 46 }}>{name}</Text>
+          <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold' }}>{main}</Text>
+          <Text style={{ ...styles.headerText, color: textColor, }}>{temp} °C</Text>
+        </View>
 
-                    <View style={styles.info}>
-                        <Text style={{ fontSize: 22, color: 'white' }}>Wind Speed</Text>
-                        <Text style={{ fontSize: 22, color: 'white' }}>{speed} m/s</Text>
-                    </View>
-                
-                </View>
-                
+        <View style={styles.extraInfo}>
+
+          <View style={styles.info}>
+            <Text style={{ fontSize: 22, color: 'white' }}>Humidity</Text>
+            <Text style={{ fontSize: 22, color: 'white' }}>{humidity} %</Text>
+          </View>
+
+          <View style={styles.info}>
+            <Text style={{ fontSize: 22, color: 'white' }}>Wind Speed</Text>
+            <Text style={{ fontSize: 22, color: 'white' }}>{speed} m/s</Text>
+          </View>
+
+        </View>
+
 
       </ImageBackground>
     </View>

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import SearchBar from './app/components/SearchBar';
 import Weather from './app/components/Weather';
 
 //const API_KEY = "0a0dc2ac4d8fc4cd27671c35cc6e4537";this is mine
@@ -46,18 +47,18 @@ export default function App() {
 
     return (
       <View>
-        <Text style={styles.container}>Something is wrong, Still sorting</Text>
+        <SearchBar fetchWeatherData={fetchWeatherData} />
+        <Text style={styles.primaryText}>City Not Found! Try Different City</Text>
       </View>
     )
 
   }
 
-
-
-
+  // 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
   return (
     <View style={styles.container}>
-      <Weather weatherData={weatherData} />
+      
+      <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} />
 
 
     </View>
@@ -72,4 +73,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  primaryText: {
+    margin: 20,
+    fontSize: 28
+}
 })
