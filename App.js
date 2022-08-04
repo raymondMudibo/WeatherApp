@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import SearchBar from './app/components/SearchBar';
 import Weather from './app/components/Weather';
-
-//const API_KEY = "0a0dc2ac4d8fc4cd27671c35cc6e4537";this is mine
-const API_KEY = "6e93b3d15872f914c6929fed9ea71e9a";//borrowed
+import { API_KEY} from '@env'
 
 
 export default function App() {
@@ -16,8 +14,6 @@ export default function App() {
 
   function fetchWeatherData(cityName) {
     setLoaded(false);
-
-    // const API = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`
     try {
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`)
         .then(data => data.json())
@@ -44,7 +40,6 @@ export default function App() {
       </View>
     )
   } else if (weatherData == null) {
-
     return (
       <View>
         <SearchBar fetchWeatherData={fetchWeatherData} />

@@ -21,7 +21,7 @@ function Weather({ weatherData, fetchWeatherData }) {
   function getBackgroundImg(weather) {
     if (weather === 'Clouds') return snow
     if (weather === 'Clear') return sunny
-    if (weather === 'Rain') return rainy
+    if (weather === 'Rain'|| 'Drizzle') return rainy
     if (weather === 'Haze') return haze
     return haze;
   }
@@ -29,8 +29,10 @@ function Weather({ weatherData, fetchWeatherData }) {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={backgroundImage}
+    <StatusBar backgroundColor='darkgray' />
+    <ImageBackground 
+        // source={backgroundImage}
+        source={require(`../assets/backgroundImages/img/haze.jpg`)}
         style={styles.backgroundImg}
         resizeMode='cover'
       >
