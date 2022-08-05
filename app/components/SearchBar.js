@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { View,Text, TextInput, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Dimensions } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 
 
 export default function SearchBar({ fetchWeatherData }) {
-    function handleChange () {
+    function handleChange() {
         if (fetchWeatherData(cityName) === null || fetchWeatherData(cityName) === undefined) {
             return (
                 <View>
@@ -26,7 +26,7 @@ export default function SearchBar({ fetchWeatherData }) {
                 onEndEditing={handleChange}
             />
             {/* <EvilIcons name="search" size={28} color="black" onPress={() => fetchWeatherData(cityName)} /> */}
-            <EvilIcons name="search" size={28} color="black" onPress={handleChange} />
+            <EvilIcons name="search" size={28} color="black" />
         </View>
     )
 }
