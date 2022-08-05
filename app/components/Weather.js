@@ -8,7 +8,7 @@ function Weather({ weatherData, fetchWeatherData }) {
 
   const { weather,
     name,
-    main: { temp, humidity },
+    main: { temp_min, temp_max, temp, humidity, feels_like },
     wind: { speed }
   } = weatherData;
   const [{ main }] = weather;
@@ -42,8 +42,11 @@ function Weather({ weatherData, fetchWeatherData }) {
 
         <View style={{ alignItems: 'center' }}>
           <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 46 }}>{name}</Text>
-          <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold' }}>{main}</Text>
-          <Text style={{ ...styles.headerText, color: textColor, }}>{temp} °C</Text>
+          <Text style={{ ...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 33 }}>{main}</Text>
+          <Text style={{ ...styles.headerText, color: textColor, fontSize: 33}}> {temp} °C</Text>
+          <Text style={{ ...styles.headerText, color: textColor, }}>Max {temp_max} °C</Text>
+          <Text style={{ ...styles.headerText, color: textColor, }}>Min {temp_min} °C</Text>
+          {/* <Text style={{ ...styles.headerText, color: textColor, }}>Feels Like{feels_like} °C</Text> */}
         </View>
 
         <View style={styles.extraInfo}>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width
   },
   headerText: {
-    fontSize: 36,
+    fontSize: 15,
     marginTop: 10,
   },
   extraInfo: {

@@ -39,7 +39,7 @@ export default function CitiesScreen() {
     }
 
     useEffect(() => {
-        fetchWeatherData('Nairobi');
+        fetchWeatherData('2078025');
         console.log(weatherData, "working?");
     }, []);
 
