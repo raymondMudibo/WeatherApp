@@ -4,57 +4,61 @@ import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import SearchBar from './app/components/SearchBar';
 import Weather from './app/components/Weather';
 import { API_KEY} from '@env'
+import CitiesScreen from './app/screens/CitiesScreen';
+
 
 
 export default function App() {
-  const [weatherData, setWeatherData] = useState(null);
-  const [loaded, setLoaded] = useState(true);
+  // const [weatherData, setWeatherData] = useState(null);
+  // const [loaded, setLoaded] = useState(true);
 
 
 
-  function fetchWeatherData(cityName) {
-    setLoaded(false);
-    try {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`)
-        .then(data => data.json())
-        .then(data => {
-          setWeatherData(data);
-          //console.log(data);
-        })
-      setLoaded(true);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // function fetchWeatherData(cityName) {
+  //   setLoaded(false);
 
-  useEffect(() => {
-    fetchWeatherData('Nairobi');
-    console.log(weatherData, "working?");
-  }, []);
+  //   try {
+  //     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`)
+  //       .then(data => data.json())
+  //       .then(data => {
+  //         setWeatherData(data);
+  //         //console.log(data);
+  //       })
+  //     setLoaded(true);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
-  if (!loaded) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator color="dodgerblue" size={36} />
+  // useEffect(() => {
+  //   fetchWeatherData('Nairobi');
+  //   console.log(weatherData, "working?");
+  // }, []);
 
-      </View>
-    )
-  } else if (weatherData == null) {
-    return (
-      <View>
-        <SearchBar fetchWeatherData={fetchWeatherData} />
-        <Text style={styles.primaryText}>City Not Found! Try Different City</Text>
-      </View>
-    )
+  // if (!loaded) {
+  //   return (
+  //     <View style={styles.container}>
+  //       <ActivityIndicator color="dodgerblue" size={36} />
 
-  }
+  //     </View>
+  //   )
+  // } else if (weatherData == null) {
+  //   return (
+  //     <View>
+  //       <SearchBar fetchWeatherData={fetchWeatherData} />
+  //       <Text style={styles.primaryText}>City Not Found! Try Different City</Text>
+  //     </View>
+  //   )
 
-  // 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
+  // }
+
+  
   return (
     <View style={styles.container}>
       
-      <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} />
-
+      {/* <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} /> */}
+      <CitiesScreen/> 
+   
 
     </View>
   );
@@ -63,7 +67,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 4,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
